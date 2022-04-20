@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      
+	<head>
+	<title> spring framework </title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	</head>
+
+	<body>
+	<a href= "/new">
+	  	<button type="button" class="btn btn-primary">Add new Product</button>
+	  </a>
+	<a href="/restapi/export/pdf" >
+      <button type="button" class="btn btn-primary">Click here to download the report</button>
+   </a>   
+	
+	  <table border="1" width="100%"  class="table table-striped"> 
+	 	<thead>  
+	       <tr>
+	          <td>Customer Id </td>
+	          <td>Customer Name</td>
+	          <td>Customer Brand</td>
+	           <td>Customer Price</td>
+	           <td>Actions</td>
+	       <tr>
+	 	</thead>
+	 	<tr th:each="Customer: ${listP}">
+    	<td th:text="${Customer.id}" />
+    	<td th:text="${Customer.name}" />
+    	<td th:text="${Customer.brand}" />
+    	<td th:text="${Customer.cost}" />
+    	
+    	<td>
+    	<a th:href="@{/edit/{id}(id=${Customer.id})}">Edit</a>
+    	<a th:href="@{/delete/{id}(id=${Customer.id})}">Delete</a>
+    	</td>
+       </tr>
+	  </table>
+	 
+	</body>
+
+</html>
